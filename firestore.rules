@@ -1,0 +1,111 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Master Admin Profile
+    match /adminProfile/{docId} {
+      allow read, write: if true;
+    }
+    match /admin_profile/{docId} {
+      allow read, write: if true;
+    }
+
+    // Stores Directory & Security
+    match /stores/{storeId} {
+      allow read, write: if true;
+    }
+
+    // Store Settings
+    match /storeSettings/{storeId} {
+      allow read, write: if true;
+    }
+    match /store_settings/{storeId} {
+      allow read, write: if true;
+    }
+
+    // Real-Time Orders
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+
+    // Customers Directory
+    match /customers/{customerId} {
+      allow read, write: if true;
+    }
+
+    // Menu Categories & Products
+    match /categories/{categoryId} {
+      allow read, write: if true;
+    }
+    match /products/{productId} {
+      allow read, write: if true;
+    }
+    match /addons/{addonId} {
+      allow read, write: if true;
+    }
+    match /addon_groups/{groupId} {
+      allow read, write: if true;
+    }
+    match /modifierGroups/{groupId} {
+      allow read, write: if true;
+    }
+
+    // Staff & Roles
+    match /staffAccounts/{staffId} {
+      allow read, write: if true;
+    }
+    match /staff_accounts/{staffId} {
+      allow read, write: if true;
+    }
+    match /roles/{roleId} {
+      allow read, write: if true;
+    }
+    match /employees/{employeeId} {
+      allow read, write: if true;
+    }
+
+    // Security Settings & Device Authorizations
+    match /security_settings/{docId} {
+      allow read, write: if true;
+    }
+    match /authorized_devices/{deviceId} {
+      allow read, write: if true;
+    }
+    match /device_authorizations/{docId} {
+      allow read, write: if true;
+    }
+    match /password_resets/{docId} {
+      allow read, write: if true;
+    }
+
+    // Operational Infrastructure
+    match /tables/{tableId} {
+      allow read, write: if true;
+    }
+    match /printers/{printerId} {
+      allow read, write: if true;
+    }
+    match /coupons/{couponId} {
+      allow read, write: if true;
+    }
+    match /discounts/{discountId} {
+      allow read, write: if true;
+    }
+    match /preset_discounts/{discountId} {
+      allow read, write: if true;
+    }
+    match /cashTransactions/{txId} {
+      allow read, write: if true;
+    }
+    match /activityLogs/{logId} {
+      allow read, write: if true;
+    }
+    match /notifications/{notifId} {
+      allow read, write: if true;
+    }
+
+    // Fallback collection match
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

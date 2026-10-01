@@ -1,0 +1,96 @@
+{
+  "entities": {
+    "adminProfile": {
+      "title": "Admin Profile",
+      "description": "Master Super Admin system settings and display identity",
+      "fields": {
+        "fullName": { "type": "string", "description": "Display/CEO name" },
+        "email": { "type": "string", "description": "Login email" },
+        "password": { "type": "string", "description": "Admin password" },
+        "companyName": { "type": "string", "description": "Organization name" },
+        "updatedAt": { "type": "string", "description": "Last update timestamp" }
+      }
+    },
+    "stores": {
+      "title": "Store Branch",
+      "description": "Individual restaurant branch records with isolated POS access",
+      "fields": {
+        "id": { "type": "string", "description": "Store ID" },
+        "businessName": { "type": "string", "description": "Store branch name" },
+        "storeCode": { "type": "string", "description": "Store branch code" },
+        "email": { "type": "string", "description": "Store branch email" },
+        "storeUsername": { "type": "string", "description": "Login username" },
+        "storePassword": { "type": "string", "description": "Login password" },
+        "address": { "type": "string", "description": "Street address" },
+        "city": { "type": "string", "description": "City" },
+        "postcode": { "type": "string", "description": "Postcode" },
+        "activeStatus": { "type": "string", "description": "Active or Suspended" }
+      }
+    },
+    "orders": {
+      "title": "Order",
+      "description": "Customer orders partitioned by storeId with real-time timers",
+      "fields": {
+        "storeId": { "type": "string", "description": "Partition key store ID" },
+        "invoiceId": { "type": "string", "description": "Unique invoice ID" },
+        "orderNumber": { "type": "string", "description": "Display order number" },
+        "orderStatus": { "type": "string", "description": "Current, On The Way, Completed, Cancelled" },
+        "orderType": { "type": "string", "description": "Delivery, Pickup, In-Store" },
+        "grandTotal": { "type": "number", "description": "Total amount in GBP" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      }
+    },
+    "customers": {
+      "title": "Customer Record",
+      "description": "Secure customer directory indexed by normalized phone and storeId",
+      "fields": {
+        "storeId": { "type": "string", "description": "Authorized store ID" },
+        "name": { "type": "string", "description": "Customer full name" },
+        "phone": { "type": "string", "description": "Customer contact phone" },
+        "normalizedPhone": { "type": "string", "description": "Sanitized phone for deduplication" },
+        "address": { "type": "string", "description": "Primary delivery street address" },
+        "postcode": { "type": "string", "description": "Delivery postcode" },
+        "totalOrders": { "type": "number", "description": "Cumulative completed orders" },
+        "totalSpend": { "type": "number", "description": "Cumulative spending amount" }
+      }
+    },
+    "addons": {
+      "title": "Add-On Modifier",
+      "description": "Menu add-ons linked to products",
+      "fields": {
+        "storeId": { "type": "string", "description": "Store ID or all" },
+        "name": { "type": "string", "description": "Add-on name" },
+        "price": { "type": "number", "description": "Price modifier in GBP" },
+        "isAvailable": { "type": "boolean", "description": "Availability toggle" },
+        "category": { "type": "string", "description": "Add-on category group" },
+        "linkedProductIds": { "type": "array", "description": "Linked product IDs" }
+      }
+    },
+    "products": {
+      "title": "Menu Product",
+      "description": "Restaurant menu items with variants and add-on links",
+      "fields": {
+        "storeId": { "type": "string", "description": "Store ID" },
+        "categoryId": { "type": "string", "description": "Category ID" },
+        "name": { "type": "string", "description": "Item name" },
+        "basePrice": { "type": "number", "description": "Base price" },
+        "isAvailable": { "type": "boolean", "description": "Active status" }
+      }
+    },
+    "staffAccounts": {
+      "title": "Staff Account",
+      "description": "Phone operator staff accounts with multi-store access permissions",
+      "fields": {
+        "id": { "type": "string", "description": "Staff ID" },
+        "name": { "type": "string", "description": "Staff operator name" },
+        "username": { "type": "string", "description": "Login username" },
+        "email": { "type": "string", "description": "Staff email" },
+        "phone": { "type": "string", "description": "Contact phone" },
+        "role": { "type": "string", "description": "STAFF" },
+        "assignedStoreId": { "type": "string", "description": "Primary or active store" },
+        "assignedStoreIds": { "type": "array", "description": "List of authorized store IDs" },
+        "status": { "type": "string", "description": "Active or Disabled" }
+      }
+    }
+  }
+}

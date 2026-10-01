@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  * {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    user-select: text;
+    -webkit-user-select: text;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  input, textarea, [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  ::selection {
+    background-color: #bfdbfe;
+    color: #1e3a8a;
+  }
+}
+
+/* Custom modern scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.35);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+/* Print styles for POS Thermal Receipts, Kitchen Tickets, and Reports */
+@media print {
+  @page {
+    margin: 0;
+    size: auto;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 12px !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+
+  #printable-receipt,
+  #printable-receipt *,
+  #printable-slip,
+  #printable-slip *,
+  #printable-report,
+  #printable-report *,
+  .printable-thermal-slip,
+  .printable-thermal-slip * {
+    visibility: visible !important;
+  }
+
+  #printable-receipt,
+  #printable-slip,
+  #printable-report,
+  .printable-thermal-slip {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 80mm !important;
+    max-width: 80mm !important;
+    margin: 0 !important;
+    padding: 4mm 3mm !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: none !important;
+    font-family: 'JetBrains Mono', 'Courier New', Courier, monospace !important;
+    font-size: 11px !important;
+    line-height: 1.25 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #printable-receipt div,
+  #printable-receipt span,
+  #printable-receipt p {
+    color: #000000 !important;
+  }
+
+  /* Prevent page breaks inside line items */
+  .line-item-row {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Nexus-Pos",
+  "description": "Commercial restaurant management, point-of-sale terminal, multi-store administration, dynamic variant/modifier ordering, UK address lookup, and real-time operations platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
