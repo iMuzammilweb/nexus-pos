@@ -158,8 +158,8 @@ export const PosMenuScreen: React.FC = () => {
       )}
 
       {/* 1. Category Bar */}
-      <div className="bg-white border-b border-[#E5EAF2] px-3 py-2 flex items-center justify-between gap-2 overflow-x-auto shrink-0 shadow-sm">
-        <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none">
+      <div className="bg-white border-b border-[#E5EAF2] px-3 py-2 flex items-start justify-between gap-2 shrink-0 shadow-sm">
+        <div className="flex flex-wrap items-center gap-1.5 min-w-0 flex-1">
           {storeCategories.length === 0 ? (
             <span className="text-xs text-[#64748B] italic py-1 px-2">
               No categories configured for {currentStore.businessName}
